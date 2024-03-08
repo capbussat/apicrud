@@ -1,18 +1,32 @@
 ## Laravel API POSTS CRUD 
 (text en català)
 
-## Descarrega amb git clone, executa composer update i executa php artisan serve
+## Descarrega amb git clone, en el terminal, es crea el directori amb nom directori-api-crud
 
-# Crea un nou directori, a dins descarrega
+git clone https://github.com/capbussat/apicrud.git  directori-api-crud
 
-git clone https://github.com/capbussat/apicrud.git
+Canvia de directori
+cd ./directori-api-crud
 
-# bàsicament actualitza el directori vendor 
+# Important: actualitza el directori vendor i fes algunes coses més
 composer update
 
+Copia el fitxer env.example a .env
+
+php artisan key:generate
+
+# Crea la base de dades
+Assegura't que la base de dades està creada (phpmyadmin)
+Al fitxer .env pots canviar el nom pel que vulguis per defecte és apicrud
+DB_DATABASE=apicrud
+
+# Fes les migracions, tindràs la taula posts creada
+php artisan migrate:fresh --seed
+
+# Executa l'aplicació
 php artisan serve
 
-## Provat amb Postman amb aquestes rutes
+## Prova amb Postman amb aquestes rutes
 
 GET|HEAD   	api/posts   		posts.index › Api\PostController@index  
 POST     	api/posts   		posts.store › Api\PostController@store  
