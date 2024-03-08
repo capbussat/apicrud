@@ -13,10 +13,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        /* Fem 3 posts aleatoris amb fakers */
         Post::factory(3)->create();
+
+        /* Un títol i una frase concretes fan un post */
         Post::factory()->create([
-            'title'   => 'Un título',
-            'content' => 'Una frase',
+            'title'   => 'Un títol',
+            'content' => 'Una frase pel contingut',
             ]
         );
         // \App\Models\User::factory(10)->create();

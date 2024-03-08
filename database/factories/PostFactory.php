@@ -20,5 +20,11 @@ class PostFactory extends Factory
             'title' => $this->faker->sentence(),
             'content' => $this->faker->paragraph(),
         ];
+
+        /* es pot substituir $this->faker per fake() */
+        /* return [
+            'title' => fake()->sentence(),
+            'content' => fake()->paragraph(),
+        ]; */
     }
 }
