@@ -16,10 +16,10 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::all();
-        // return PostResource::collection($posts);
+        // tornem dades en json, he afegit un missatge i les dades
         return response()->json(
             [
-                'message' => 'Aqui tens la llista',
+                'status' => 'listed',
                 'data' => PostResource::collection($posts)
             ],
             200
@@ -50,7 +50,7 @@ class PostController extends Controller
 
         $post->update($request->all());
         return response()->json([
-            'status' => 'updated',
+            'status' => 'Updated ' . $id,
             'message' => 'Aqui tens el post actualitzat',
             'data' => new PostResource($post)
         ], 204);
@@ -61,20 +61,17 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-
         $post = Post::find($id);
-
         if ($post === null) {
             return response()->json([
-                'message' => 'No s\'ha trobat ' . $id,
+                'message' => 'Not found' . $id,
                 'data' => $id
             ], 200);
         }
 
-
         $post->delete();
         return response()->json([
-            'message' => 'Aqui tens el post eliminat',
+            'message' => 'Deleted ' . $id,
             'data' => $id
         ], 200);
     }

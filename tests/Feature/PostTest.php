@@ -23,6 +23,7 @@ class PostTest extends TestCase
     {
         $response  = $this->getJson('/api/posts');
         $response->assertStatus(200);
+        $response->assertJson(['status' => 'listed']);
     }
 
     // store
@@ -36,7 +37,7 @@ class PostTest extends TestCase
 
     public function test_api_posts_store_error_no_title(): void
     {
-        $data = ['title' => '', 'content' => 'El contingut'];
+        $data = [ 'content' => 'El contingut'];
         $response  = $this->postJson('/api/posts/', $data);
         $response->assertStatus(422);
     }
